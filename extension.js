@@ -10,7 +10,10 @@ let panelButton, panelButtonText, timeout;
 // This function allows us to update the text shown in the taskbar panel
 function setButtonText () {
 	
-	panelButtonText.set_text( );
+	//var [ok, out, err, exit] = GLib.spawn_command_line_sync('ls ~/.config/PulseEffects/output/');
+	var [ok, out, err, exit] = GLib.spawn_command_line_sync('date');
+
+	panelButtonText.set_text( out.toString());
 	return true;
 }
 
@@ -21,6 +24,11 @@ function getPulseEffectPresets () {
 
 	//Nicer way to get *just* output preset names - it includes the .json extension though... we can trim this, innit
 	// "ls ~/.config/PulseEffects/output/"
+	// cd ~/.config/PulseEffects/output/
+	// declare -a pePresets
+	// for file in *.json; do
+	//   pePresets+=( "${file%.json}" )
+	// done
 
 }
 
@@ -54,7 +62,7 @@ function enable (){
 
 function disable () {
 	
-	// MainLoop.source_remove(timeout);
+	MainLoop.source_remove(timeout);
 
 	Main.panel._rightBox.remove_child(panelButton);
 
