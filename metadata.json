@@ -1,0 +1,10 @@
+{
+	"description" : "PulseEffects Preset Switcher",
+	"name" : "pulseeffects-presets-extension",
+	"shell-version" : [
+		"3.36.0"
+	],
+	"url" : "",
+	"uuid" : "pulseeffects-presets-extension@robotard.uk",
+	"version" : 1 
+}
